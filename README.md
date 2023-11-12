@@ -47,15 +47,14 @@ Run the below command to send the request with some pre-popuated values -
 ```
 python request.py
 ``
-
-**##Note for HTML**
+### Note For HTML
 After importing all libraries and packages, respective codes will be written following the available coding file. And, must render the HTML and CSS file to get the frontend design.
 
 As there will be several files, we should run only the main App (HTML and CSS files already rendered into the app) file. Once the app is running on the terminal, it will give a result of active running file status with an address of the localhost server. Copy and Run the address on the web server and the model will be visible on the server with the functionality included at. Then, Upload & get the preference model result.
 
 In addition, if CSS is improved in the future, the file must link with the HTML file, and render the HTML file in the main.py. So, the changes will be effected properly.
 
-**#Evaluation:**
+### Evaluation
 To evaluate the system, for every new dataset must alter the features column. This is the only thing must needs to be accounted in order to run the code successfully. Example code is below:
 
 The column may varies from datasets to new datasets. Since it is a diabetes dataset, it has such as columns BMI, insulin, etc. However, to evaluate, I have used numerous datasets.
