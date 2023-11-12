@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        .boxCls {
+            background-color: rgb(179, 80, 86);
+            width: 250px;
+            border: 1px solid rgb(179, 80, 86);
+            padding: 2px;
+            margin: -5px;
+            text-align: center;
+            /*margin-left: 120px;*/
+            position: center;
+            border-radius: 12px;
+        }
+        
+        .boxReg {
+            background-color: rgb(179, 80, 86);
+            width: 250px;
+            border: 1px solid rgb(179, 80, 86);
+            padding: 2px;
+            margin: -5px;
+            text-align: center;
+            /*margin-left: 230px;*/
+            border-radius: 12px;
+        }
+        
+        .boxClust {
+            background-color: rgb(179, 80, 86);
+            width: 250px;
+            border: 1px solid rgb(179, 80, 86);
+            padding: 2px;
+            margin: -5px;
+            text-align: center;
+            /*margin-left: 230px;*/
+            border-radius: 12px;
+        }
+        
+        .button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 10px 22px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 0px 0px;
+            margin-top: -5px;
+            cursor: pointer;
+            border-radius: 12px;
+        }
+        
+        .buttonUpload {
+            border: none;
+            color: white;
+            background-color: #008CBA;
+            padding: 5px 12px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 15px;
+            margin: 0px 0px;
+            cursor: pointer;
+            border-radius: 12px;
+        }
+        
+        .columUploadFile {
+            float: left;
+            width: 45%;
+            margin-left: 20px;
+            /* Should be removed. Only for demonstration */
+        }
+        
+        .columBefore {
+            float: left;
+            margin-left: 20px;
+            /* Should be removed. Only for demonstration */
+        }
+        
+        .columAfter {
+            float: right;
+            margin-right: 10px;
+            /* Should be removed. Only for demonstration */
+        }
+        /* Clear floats after the columns */
+        
+        .row:after {
+            content: "";
+            margin-left: 300;
+            display: table;
+            clear: both;
+        }
+        
+        .BoxResult {
+            background-color: rgb(225, 218, 218);
+            border: 4px solid rgb(0, 0, 0);
+            width: 970px;
+            padding: 20px;
+            margin: 5px;
+            margin-left: 155px;
+            /*color: white;*/
+        }
+    </style>
+</head>
+
+<body style="background-color:rgb(225, 218, 218);height: 1500px;">
+    <h1 style="color: rgb(1, 3, 6); text-align: center;">Machine Learning Evaluator for Data Privacy</h1>
+
+    <div class="row">
+        <div class="columUploadFile">
+            <p style="text-align: center; text-align: center; margin-bottom: -2px; font-weight: bold">Choose & Upload CSV File Before De-identification</p>
+            <br>
+            <form style="text-align: center;" method="POST" enctype="multipart/form-data" action="/">
+                <input type="file" id="myFile" name="uploaded-file" accept=".csv">
+                <input type="submit" class="buttonUpload" value="Upload file">
+            </form>
+            <br>
+            <p style="text-align: center; color:green;">Note: File Uploaded Successfully</p>
+        </div>
+        <div class="columUploadFile">
+            <p style="text-align: center; text-align: center; margin-bottom: -2px; font-weight: bold">Choose & Upload CSV File After De-identification</p>
+            <br>
+            <form style="text-align: center;" method="POST" enctype="multipart/form-data" action="/">
+                <input type="file" id="myFile" name="uploaded-file" accept=".csv">
+                <input type="submit" class="buttonUpload" value="Upload file">
+            </form>
+            <br>
+            <p style="text-align: center; color:green;">Note: File Uploaded Successfully</p>
+        </div>
+    </div>
+
+
+
+    <div class="BoxResult">
+        <div class="row">
+            <div class="columBefore">
+                <div class="boxCls">
+                    <P style="color:white; font-size: 20px;"><b> Classification </b></P>
+                    <form style="text-align: center;" action="/show_result_classification" method="post">
+                        <input type="submit" class="button" value="Test" />
+                    </form>
+                </div>
+
+                <div>
+
+                    <h2 style="text-align: center;">--------------------------------</h2>
+                    <p style="text-align: center;"> {{ accuracy_score_before }} </p>
+                    <p style="text-align: center; text-indent: -16px"> {{ recall_score_before }} </p>
+                    <p style="text-align: center; text-indent: -4px"> {{ precision_score_before }} </p>
+                    <p style="text-align: center; text-indent: -35px"> {{ f1_score_before }} </p>
+                    <p style="text-align: center; text-indent: -16px"> {{ barier_scoreCLS_before }} </p>
+                </div>
+            </div>
+            <div class="columAfter">
+                <div class="boxCls">
+                    <P style="color:white; font-size: 20px;"><b> Classification </b></P>
+                    <form style="text-align: center;" action="/show_result_classification_after" method="post">
+                        <input type="submit" class="button" value="Test" />
+                    </form>
+                </div>
+
+                <div>
+
+                    <h2 style="text-align: center;">--------------------------------</h2>
+                    <p style="text-align: center;"> {{ accuracy_score_after }} </p>
+                    <p style="text-align: center; text-indent: -16px"> {{ recall_score_after }} </p>
+                    <p style="text-align: center; text-indent: -4px"> {{ precision_score_after }} </p>
+                    <p style="text-align: center; text-indent: -35px"> {{ f1_score_after }} </p>
+                    <p style="text-align: center; text-indent: -16px"> {{ barier_scoreCLS_after }} </p>
+                </div>
+            </div>
+        </div>
+        <p style="text-align: center; text-indent: -16px"> {{ p_valueCLS }} </p>
+    </div>
+
+
+
+
+
+
+    <div class="BoxResult">
+        <div class="row">
+            <div class="columBefore">
+                <div>
+                    <div class="boxReg">
+                        <P style="color:white; font-size: 20px;"><b>Regression </b></P>
+                        <form style="text-align: center;" action="/show_result_regression" method="post">
+                            <input type="submit" class="button" value="Test" />
+                        </form>
+                    </div>
+                </div>
+
+                <div>
+                    <h2 style="text-align: center;">--------------------------------</h2>
+                    <p style="text-align: center;"> {{r_squared_value_before}} </p>
+                    <p style="text-align: center; text-indent: -16px"> {{adj_r_squared_value_before}} </p>
+                    <p style="text-align: center; text-indent: -16px"> {{barier_scoreREG_before}} </p>
+                </div>
+            </div>
+            <div class="columAfter">
+                <div class="boxReg">
+                    <P style="color:white; font-size: 20px;"><b>Regression </b></P>
+                    <form style="text-align: center;" action="/show_result_regression_after" method="post">
+                        <input type="submit" class="button" value="Test" />
+                    </form>
+                </div>
+                <div>
+                    <h2 style="text-align: center;">--------------------------------</h2>
+                    <p style="text-align: center;"> {{r_squared_value_after}} </p>
+                    <p style="text-align: center; text-indent: -16px"> {{adj_r_squared_value_after}} </p>
+                    <p style="text-align: center; text-indent: -16px"> {{barier_scoreREG_after}} </p>
+                </div>
+            </div>
+        </div>
+
+        <p style="text-align: center; text-indent: -16px"> {{ p_valueREG }} </p>
+    </div>
+
+    <div class="BoxResult">
+        <div class="row">
+            <div class="columBefore">
+                <div class="boxClust">
+                    <P style="color:white; font-size: 20px;"><b>Clustering</b></P>
+                    <form style="text-align: center;" action="/show_result_clustering" method="post">
+                        <input type="submit" class="button" value="Test" />
+                    </form>
+                </div>
+                <div>
+                    <h2 style="text-align: center;">--------------------------------</h2>
+                    <p style="text-align: center;"> {{ Inirtia_value_before }} </p>
+                </div>
+            </div>
+            <div class="columAfter">
+                <div class="boxClust">
+                    <P style="color:white; font-size: 20px;"><b>Clustering</b></P>
+                    <form style="text-align: center;" action="/show_result_clustering_after" method="post">
+                        <input type="submit" class="button" value="Test" />
+                    </form>
+                </div>
+                <div>
+                    <h2 style="text-align: center;">--------------------------------</h2>
+                    <p style="text-align: center;"> {{ Inirtia_value_after }} </p>
+                </div>
+            </div>
+        </div>
+
+        <p style="text-align: center; text-indent: -16px"> {{ p_valueCLUST }} </p>
+    </div>
+
+</body>
+
+</html>
