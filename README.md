@@ -19,7 +19,7 @@ Also,
 This project has four major parts :
 1. Flask_ML_Evaluator.py - This contains code for our Machine Learning models (classification, regression, clustering).
 2. .py - This contains Flask APIs that receive data details through GUI or API calls, compute the precited value based on our model, and return it.
-3. request.py - This uses the requests module to call APIs already defined in app.py and displays the returned value.
+3. request.py - This uses the requests module to call APIs already defined in app.py and displays the returned value. (Temporarily it's labeled with Flask_ML_Evaluator.py)
 4. templates - This folder contains the HTML template to customer the design.
 
 ### Running the project
